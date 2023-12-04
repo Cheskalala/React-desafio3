@@ -36,7 +36,7 @@ const Formulario = ({ agregarNuevoColaborador }) =>{
       setTelefono('');
 
       setExito(true)
-
+      setError(false)
     } else {
 
       setError(true)
