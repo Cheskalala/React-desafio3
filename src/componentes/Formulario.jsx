@@ -2,7 +2,7 @@ import { useState } from "react";
 import Alerta from "./Alerta";
 import ExitoAlerta from "./ExitoAlerta";
 
-const Formulario = () => {
+const Formulario = ({ agregarNuevoColaborador }) =>{
   //Estados del formulario
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
@@ -13,21 +13,35 @@ const Formulario = () => {
   const [error, setError] = useState(false);
   const [exito, setExito] = useState(false);
   //Función antes de enviar el formulario
+
   const validarDatos = (e) => {
     e.preventDefault();
-    //Validación;
-    if 
-        (nombre === "" || correo === "" || edad === "" || cargo === "" || telefono === "") 
-        {
-        setError(true);
-        setExito(false);
-        return;
-        }
-    else{
-        setError(false)
-        setExito(true);
-    }    
-    
+    if (nombre && correo && edad && cargo && telefono) {
+      // Crear un objeto para el nuevo colaborador
+      const nuevoColaborador = {
+        id: Date.now().toString(), // Generar un ID único para el nuevo colaborador
+        nombre,
+        correo,
+        edad,
+        cargo,
+        telefono
+      };
+      // Llamar a la función para agregar el nuevo colaborador
+      agregarNuevoColaborador(nuevoColaborador);
+      // Limpiar los campos después de agregar el nuevo colaborador
+      setNombre('');
+      setCorreo('');
+      setEdad('');
+      setCargo('');
+      setTelefono('');
+
+      setExito(true)
+
+    } else {
+
+      setError(true)
+      setExito (false)
+    }
   };
   return (
     <>

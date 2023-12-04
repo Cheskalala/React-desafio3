@@ -13,7 +13,7 @@ const Listado = ({ colaboradores, eliminarColaborador }) => {
               <th>Edad</th>
               <th>Cargo</th>
               <th>Teléfono</th>
-              <th>Acciones</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
